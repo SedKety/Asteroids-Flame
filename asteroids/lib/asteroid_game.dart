@@ -13,11 +13,11 @@ class AsteroidsGame extends FlameGame with HasKeyboardHandlerComponents, HasColl
     super.onLoad();
 
     var player = Player();
-    world.add(player);
+    add(player);
 
 
     var asteroidSpawner = AsteroidSpawner();
-    world.add(asteroidSpawner);
+    add(asteroidSpawner);
   }  
 
 

@@ -51,8 +51,8 @@ class Player extends SpriteAnimationGroupComponent with KeyboardHandler, Transfo
   //The "awake/start" method (as it's called in unity), called upon component-instantiation.
   @override
   FutureOr<void> onLoad() async{
-    add(RectangleHitbox());
 
+    priority = 1;
     //Have the bulletpool be an active entity within the game hierarchy
       //Needed to show the pooledobject-sprites
     parent!.add(bulletPool);
@@ -73,6 +73,12 @@ class Player extends SpriteAnimationGroupComponent with KeyboardHandler, Transfo
     //This sets the current animation with the input being an enum as explained before.
     //Effectively this system is just a statemachine with enums
     current = PlayerState.dashing;
+
+
+    //Sets the anchor(2D "origin") to the center of the sprite
+    super.anchor = Anchor.center;
+    add(RectangleHitbox(anchor: Anchor.topLeft));
+
   }
 
   
@@ -84,9 +90,6 @@ class Player extends SpriteAnimationGroupComponent with KeyboardHandler, Transfo
       isDashing = false;
       current = PlayerState.idle;
     }
-    
-    //Sets the anchor(2D "origin") to the center of the sprite
-    super.anchor = Anchor.center;
     
     var movementVector = lookingDirection(angle) * movespeed * dt;
 

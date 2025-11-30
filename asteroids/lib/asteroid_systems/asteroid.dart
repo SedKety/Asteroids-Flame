@@ -13,9 +13,10 @@ class Asteroid extends SpriteComponent with CollisionCallbacks {
     debugMode = true;
     Random random = Random();
     sprite = await Sprite.load("asteroids/asteroid_${random.nextInt(6)}.png");
-    angle = random.nextDouble();
+    //angle = random.nextDouble();
     
-    add(RectangleHitbox());
+    super.anchor = Anchor.center;
+    add(RectangleHitbox(anchor: Anchor.topLeft));
 
   }
 
@@ -23,7 +24,7 @@ class Asteroid extends SpriteComponent with CollisionCallbacks {
   void onCollision(Set<Vector2> intersectionPoints, PositionComponent other) {
     onCollisionCallback?.call(intersectionPoints, other);
     if(other is Damagable){
-      print("Hittable");
+      print("Encountered an Damagable component!");
     }
   }
 }
