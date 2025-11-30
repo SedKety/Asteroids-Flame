@@ -1,9 +1,11 @@
 import 'dart:async';
 
 
+import 'package:asteroids/damagable.dart';
 import 'package:asteroids/player_systems/mixins/TransformExtensions.dart';
 import 'package:asteroids/player_systems/shooting/bullet.dart';
 import 'package:asteroids/pooling/object_pool.dart';
+import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flutter/services.dart';
 
@@ -12,12 +14,14 @@ enum PlayerState{idle, flying, dashing}
 //Player class, inherits from SpriteAnimationGroupComponent (instead of using base, its called super in Dart.)
 //Also makes use of the "mixin" KeyboardHandler, this will allow the reading of key-inputs
   //A mixin is kind of like an interface, but it allows for code within the functions it lends.
-class Player extends SpriteAnimationGroupComponent with KeyboardHandler, TransformExtensions
+class Player extends SpriteAnimationGroupComponent with KeyboardHandler, TransformExtensions, CollisionCallbacks implements Damagable
 {
   //The late keyword: It tells the compiler that it isnt directly initialized but it will later.
   //The final keyword: Like const, but at runtime. Once assigned cannot be reassigned. Its like a lock
   late final SpriteAnimation idleAnimation;
   late final SpriteAnimation dashAnimation;
+
+  int health = 3; //Player health
 
   //Movement
   double movespeed = 100; //The speed at which the player will move
@@ -41,12 +45,13 @@ class Player extends SpriteAnimationGroupComponent with KeyboardHandler, Transfo
 
   //Shooting
   ObjectPool bulletPool = ObjectPool<Bullet>();
-  double bulletVelocity = 250;
+  double bulletVelocity = 333;
   Vector2 shootPos = Vector2(10, -5);
 
   //The "awake/start" method (as it's called in unity), called upon component-instantiation.
   @override
   FutureOr<void> onLoad() async{
+    add(RectangleHitbox());
 
     //Have the bulletpool be an active entity within the game hierarchy
       //Needed to show the pooledobject-sprites
@@ -130,7 +135,6 @@ class Player extends SpriteAnimationGroupComponent with KeyboardHandler, Transfo
   
   Vector2 rotatedShootPos(Vector2 shootPos, double angle) => shootPos.clone()..rotate(angle);
 
-
   void shoot(){
 
     var bulletPos = position + rotatedShootPos(shootPos, angle);
@@ -147,5 +151,21 @@ class Player extends SpriteAnimationGroupComponent with KeyboardHandler, Transfo
     bullet = Bullet(position: bulletPos, bulletVelocity: bulletVelocity, angle: angle, bulletPoolSource: bulletPool);
     bulletPool.add(bullet);
     }
+  }
+
+  @override
+  void takeDamage(int amount, DamageLayer damageLayer){
+    print("Player has been hit");
+    //If we somehow manage to attack ourselves the damage gets nullified
+    if(damageLayer == DamageLayer.friendly) return;
+
+    health -= amount;
+    if(health <= 0){ 
+      onDeath(); 
+    }
+  }
+
+  void onDeath(){
+    print("Player has died");
   }
 }

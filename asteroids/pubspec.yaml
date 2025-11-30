@@ -24,4 +24,11 @@ flutter:
    - assets/images/spaceship/spaceship_dash.png
 
    - assets/images/projectiles/plasma_bolt.png
+
+   - assets/images/asteroids/asteroid_0.png
+   - assets/images/asteroids/asteroid_1.png
+   - assets/images/asteroids/asteroid_2.png
+   - assets/images/asteroids/asteroid_3.png
+   - assets/images/asteroids/asteroid_4.png
+   - assets/images/asteroids/asteroid_5.png
   
