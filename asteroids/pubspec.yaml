@@ -22,4 +22,6 @@ flutter:
   assets:
    - assets/images/spaceship/spaceship.png
    - assets/images/spaceship/spaceship_dash.png
+
+   - assets/images/projectiles/plasma_bolt.png
   

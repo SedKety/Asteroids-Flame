@@ -1,11 +1,11 @@
 import 'dart:async';
 
-import 'package:asteroids/player.dart';
+import 'package:asteroids/player_systems/player.dart';
 import 'package:flame/game.dart';
 import 'package:flame/input.dart';
 import 'package:flutter/material.dart';
 
-class AsteroidsGame extends FlameGame with KeyboardEvents{
+class AsteroidsGame extends FlameGame with HasKeyboardHandlerComponents{
 
   @override
   FutureOr<void> onLoad() {
