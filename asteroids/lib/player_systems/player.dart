@@ -1,6 +1,7 @@
 import 'dart:async';
 
 
+import 'package:asteroids/asteroid_game.dart';
 import 'package:asteroids/damagable.dart';
 import 'package:asteroids/player_systems/mixins/TransformExtensions.dart';
 import 'package:asteroids/player_systems/shooting/bullet.dart';
@@ -12,9 +13,11 @@ import 'package:flutter/services.dart';
 enum PlayerState{idle, flying, dashing}
 
 //Player class, inherits from SpriteAnimationGroupComponent (instead of using base, its called super in Dart.)
-//Also makes use of the "mixin" KeyboardHandler, this will allow the reading of key-inputs
+//Also makes use of multiple mixin's which allow for: input, movement calculations and collisions.
   //A mixin is kind of like an interface, but it allows for code within the functions it lends.
-class Player extends SpriteAnimationGroupComponent with KeyboardHandler, TransformExtensions, CollisionCallbacks implements Damagable
+class Player extends SpriteAnimationGroupComponent 
+with KeyboardHandler, TransformExtensions, CollisionCallbacks, HasGameReference<AsteroidsGame> 
+implements Damagable
 {
   //The late keyword: It tells the compiler that it isnt directly initialized but it will later.
   //The final keyword: Like const, but at runtime. Once assigned cannot be reassigned. Its like a lock
@@ -52,7 +55,7 @@ class Player extends SpriteAnimationGroupComponent with KeyboardHandler, Transfo
   @override
   FutureOr<void> onLoad() async{
 
-    priority = 1;
+    priority = 2;
     //Have the bulletpool be an active entity within the game hierarchy
       //Needed to show the pooledobject-sprites
     parent!.add(bulletPool);
@@ -80,7 +83,7 @@ class Player extends SpriteAnimationGroupComponent with KeyboardHandler, Transfo
     add(RectangleHitbox(anchor: Anchor.topLeft));
 
   }
-
+  
   
   //Standard-engine update function. "dt" stands for deltatime: time since last frame
   @override 
@@ -99,6 +102,8 @@ class Player extends SpriteAnimationGroupComponent with KeyboardHandler, Transfo
 
     //Adjust angle according to input
     angle += rotationDirection * rotationSpeed * dt;
+
+    wrapAroundScreen(game, position);
 
     //Call the base update
     super.update(dt);
@@ -151,7 +156,7 @@ class Player extends SpriteAnimationGroupComponent with KeyboardHandler, Transfo
     }
     //If unsuccesfull create another bullet and add it to the bulletpool
     else{
-    bullet = Bullet(position: bulletPos, bulletVelocity: bulletVelocity, angle: angle, bulletPoolSource: bulletPool);
+    bullet = Bullet(position: bulletPos, bulletVelocity: bulletVelocity, angle: angle, bulletPoolSource: bulletPool, gameRef: game);
     bulletPool.add(bullet);
     }
   }

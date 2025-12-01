@@ -15,6 +15,8 @@ class AsteroidSpawner extends Component with HasGameReference<AsteroidsGame> {
   double spawnInterval = 2;
   double timeSinceLastSpawn = 0;
 
+  int maxAsteroids = 25;
+
   @override
   void onLoad(){
     game.add(asteroidPool);
@@ -30,9 +32,16 @@ class AsteroidSpawner extends Component with HasGameReference<AsteroidsGame> {
   }
 
   void spawnAsteroid() async{
+    var asteroid = asteroidPool.depoolItem();
     var spawnPos = new Vector2(random.nextDouble() * game.size.x, random.nextDouble() * game.size.y);
-    print("Spawning asteroid at: $spawnPos");
-    var asteroid = Asteroid(position: spawnPos);
+    var velocity = Vector2(random.nextDouble() * 50, random.nextDouble() * 50);
+    var angle = random.nextDouble();
+    if(asteroid != null){
+      asteroid.updateValues(spawnPos, angle, velocity, asteroidPool);
+    }
+    {
+      asteroid = Asteroid(position: spawnPos, gameRef: game, asteroidVelocity: velocity, pool: asteroidPool);
+    }
     asteroidPool.add(asteroid);
   }
 }
