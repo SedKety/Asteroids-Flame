@@ -3,10 +3,10 @@ import 'dart:async';
 
 import 'package:asteroids/asteroid_game.dart';
 import 'package:asteroids/damagable.dart';
-import 'package:asteroids/player_systems/mixins/TransformExtensions.dart';
+import 'package:asteroids/player_systems/mixins/transform_extensions.dart';
 import 'package:asteroids/player_systems/shooting/bullet.dart';
 import 'package:asteroids/pooling/object_pool.dart';
-import 'package:flame/collisions.dart';
+import 'package:flame/collisions.dart'; 
 import 'package:flame/components.dart';
 import 'package:flutter/services.dart';
 
@@ -24,7 +24,7 @@ implements Damagable
   late final SpriteAnimation idleAnimation;
   late final SpriteAnimation dashAnimation;
 
-  int health = 3; //Player health
+  int health = 1; //Player health
 
   //Movement
   double movespeed = 100; //The speed at which the player will move
@@ -49,7 +49,7 @@ implements Damagable
   //Shooting
   ObjectPool bulletPool = ObjectPool<Bullet>(); //The pooler to store all the bullets for future pooling/depooling
   double bulletVelocity = 333; //Speed at which the bullet travels
-  Vector2 shootPos = Vector2(20, -5); //Offset from the origin (anchor), where the bullet is fired from
+  Vector2 shootPos = Vector2(15, -5); //Offset from the origin (anchor), where the bullet is fired from
   double shootCooldown = .5; //Time in between every shot
   double timeSinceLastShot = 0; //Time since the last shot was fired
 
@@ -57,7 +57,9 @@ implements Damagable
   @override
   FutureOr<void> onLoad() async{
 
-    priority = 2;
+    position = Vector2(game.size.x * .5, game.size.y * .5);
+
+    priority = 3;
     //Have the bulletpool be an active entity within the game hierarchy
       //Needed to show the pooledobject-sprites
     parent!.add(bulletPool);
@@ -173,15 +175,14 @@ implements Damagable
   }
 
   @override
-  void takeDamage(int amount, DamageLayer damageLayer){
-    print("Player has been hit");
-    //If we somehow manage to attack ourselves the damage gets nullified
-    if(damageLayer == DamageLayer.friendly) return;
+  bool takeDamage(int amount, DamageLayer damageLayer){
+    if(damageLayer == DamageLayer.friendly) return false;
 
     health -= amount;
     if(health <= 0){ 
       onDeath(); 
     }
+    return true;
   }
 
   void onDeath(){

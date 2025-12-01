@@ -2,8 +2,8 @@ import 'package:asteroids/damagable.dart';
 import 'package:asteroids/pooling/object_pool.dart';
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
-import 'package:asteroids/player_systems/mixins/TransformExtensions.dart';
-import 'package:flame/game.dart';
+import 'package:asteroids/player_systems/mixins/transform_extensions.dart';
+import 'package:flame/game.dart'; 
 
 enum BulletState{alive, destroyed}
 
@@ -13,7 +13,7 @@ class Bullet extends SpriteAnimationGroupComponent with TransformExtensions, Col
 
   double despawnTime = 5;  //For how long the bullet can exist before having the onDestroy function
   double lifetimeCounter = 0; //For how long the bullet is active
-
+ 
   ObjectPool bulletPool; 
 
   Game game;
@@ -35,7 +35,7 @@ class Bullet extends SpriteAnimationGroupComponent with TransformExtensions, Col
 
   @override 
   void onLoad() async{
-    priority = 1;
+    priority = 2;
     add(RectangleHitbox());
     parent = bulletPool;
     var alive = await SpriteAnimation.load("projectiles/plasma_bolt.png",
@@ -69,15 +69,17 @@ class Bullet extends SpriteAnimationGroupComponent with TransformExtensions, Col
     bulletPool.poolItem(this);
     removeFromParent();
   }
-
+  
   @override
   void onCollision(Set<Vector2> intersectionPoints, PositionComponent other) {
     onCollisionCallback?.call(intersectionPoints, other);
     if (other is Damagable) {
-      final d = other as Damagable;
-      d.takeDamage(1, DamageLayer.friendly);
-      parent?.remove(this);
+      var d = other as Damagable;
+      if(d.takeDamage(1, DamageLayer.friendly)){
+          onDestroy(); 
+      }
    }
+
 
 
     super.onCollision(intersectionPoints, other);

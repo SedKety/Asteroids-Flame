@@ -31,4 +31,6 @@ flutter:
    - assets/images/asteroids/asteroid_3.png
    - assets/images/asteroids/asteroid_4.png
    - assets/images/asteroids/asteroid_5.png
+
+   - assets/images/backgrounds/game_background.jpg
   
