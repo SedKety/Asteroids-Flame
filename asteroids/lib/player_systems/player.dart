@@ -47,9 +47,11 @@ implements Damagable
   double rotationDirection = 0; //The "axis" used to determine whether to increment or decrement the angle of the object
 
   //Shooting
-  ObjectPool bulletPool = ObjectPool<Bullet>();
-  double bulletVelocity = 333;
-  Vector2 shootPos = Vector2(10, -5);
+  ObjectPool bulletPool = ObjectPool<Bullet>(); //The pooler to store all the bullets for future pooling/depooling
+  double bulletVelocity = 333; //Speed at which the bullet travels
+  Vector2 shootPos = Vector2(20, -5); //Offset from the origin (anchor), where the bullet is fired from
+  double shootCooldown = .5; //Time in between every shot
+  double timeSinceLastShot = 0; //Time since the last shot was fired
 
   //The "awake/start" method (as it's called in unity), called upon component-instantiation.
   @override
@@ -88,7 +90,9 @@ implements Damagable
   //Standard-engine update function. "dt" stands for deltatime: time since last frame
   @override 
   void update(double dt){
+    timeSinceLastShot += dt;
     dashTimer += dt; 
+
     if(dashTimer >= dashDuration){
       isDashing = false;
       current = PlayerState.idle;
@@ -141,10 +145,14 @@ implements Damagable
     return true;
   }
   
+  //The shootpos at the right offset from the player with taking account of the rotation (angle)
   Vector2 rotatedShootPos(Vector2 shootPos, double angle) => shootPos.clone()..rotate(angle);
 
   void shoot(){
+    //If the time passed since last shot is lower then the cooldown return to prevent shooting when on cooldown
+    if(timeSinceLastShot < shootCooldown) return;
 
+    //The place where the bullet will be fired
     var bulletPos = position + rotatedShootPos(shootPos, angle);
 
     //Tries to de-pool an existing (but disabled) bullet. 
@@ -154,11 +162,14 @@ implements Damagable
     if(bullet != null){
       bullet.updateValues(bulletPos, angle, bulletPool);
     }
+
     //If unsuccesfull create another bullet and add it to the bulletpool
     else{
-    bullet = Bullet(position: bulletPos, bulletVelocity: bulletVelocity, angle: angle, bulletPoolSource: bulletPool, gameRef: game);
-    bulletPool.add(bullet);
+      bullet = Bullet(position: bulletPos, bulletVelocity: bulletVelocity, angle: angle, bulletPoolSource: bulletPool, gameRef: game);
+      bulletPool.add(bullet);
     }
+
+    timeSinceLastShot = 0;
   }
 
   @override

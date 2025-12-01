@@ -12,7 +12,6 @@ class ObjectPool<T> extends Component{
 
   void poolItem(T item){
     if(objectPool.length >= maxItems) {
-      print("Pool filled. ${objectPool.length}");
       return;
     }
     objectPool.add(item);

@@ -35,13 +35,13 @@ class AsteroidSpawner extends Component with HasGameReference<AsteroidsGame> {
     var asteroid = asteroidPool.depoolItem();
     var spawnPos = new Vector2(random.nextDouble() * game.size.x, random.nextDouble() * game.size.y);
     var velocity = Vector2(random.nextDouble() * 50, random.nextDouble() * 50);
-    var angle = random.nextDouble();
+
     if(asteroid != null){
-      asteroid.updateValues(spawnPos, angle, velocity, asteroidPool);
+      asteroid.updateValues(spawnPos, velocity, asteroidPool);
     }
-    {
+    else{
       asteroid = Asteroid(position: spawnPos, gameRef: game, asteroidVelocity: velocity, pool: asteroidPool);
+      asteroid.parent = asteroidPool;
     }
-    asteroidPool.add(asteroid);
   }
 }

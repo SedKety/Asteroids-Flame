@@ -11,7 +11,7 @@ class Bullet extends SpriteAnimationGroupComponent with TransformExtensions, Col
 
   double velocity = 0; //How fast the bullet moves
 
-  double despawnTime = 2;  //For how long the bullet can exist before having the onDestroy function
+  double despawnTime = 5;  //For how long the bullet can exist before having the onDestroy function
   double lifetimeCounter = 0; //For how long the bullet is active
 
   ObjectPool bulletPool; 
@@ -76,6 +76,7 @@ class Bullet extends SpriteAnimationGroupComponent with TransformExtensions, Col
     if (other is Damagable) {
       final d = other as Damagable;
       d.takeDamage(1, DamageLayer.friendly);
+      parent?.remove(this);
    }
 
 

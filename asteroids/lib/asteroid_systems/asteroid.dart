@@ -12,6 +12,8 @@ class Asteroid extends SpriteComponent with CollisionCallbacks, TransformExtensi
   Game game;
   Vector2 velocity;
   ObjectPool asteroidPool;
+  double rotationSpeed = 1;
+
   Asteroid({required Vector2 position, required Game gameRef, required Vector2 asteroidVelocity, required ObjectPool pool}) 
   : game = gameRef, velocity = asteroidVelocity, asteroidPool = pool, super(position: position, size: Vector2(124, 70));
 
@@ -35,6 +37,7 @@ class Asteroid extends SpriteComponent with CollisionCallbacks, TransformExtensi
 
   @override 
   void update(double dt){
+    angle += rotationSpeed * dt;
     position += velocity * dt;
     wrapAroundScreen(game, position);
   }
