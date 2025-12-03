@@ -1,0 +1,10 @@
+^C:\USERS\NOBEM\DOCUMENTS\GITHUB\ASTEROIDS-FLAME\ASTEROIDS\BUILD\WINDOWS\X64\CMAKEFILES\EAA2B3B2B3AEAE98380E2B075977026A\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SC:/Users/nobem/Documents/Github/Asteroids-Flame/asteroids/windows -BC:/Users/nobem/Documents/Github/Asteroids-Flame/asteroids/build/windows/x64 --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/Users/nobem/Documents/Github/Asteroids-Flame/asteroids/build/windows/x64/asteroids.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

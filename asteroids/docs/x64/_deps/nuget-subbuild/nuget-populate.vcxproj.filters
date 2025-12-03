@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\nobem\Documents\Github\Asteroids-Flame\asteroids\build\windows\x64\_deps\nuget-subbuild\CMakeFiles\77bdcfa3cee79be933d03a3dfd1bd53e\nuget-populate-mkdir.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\nobem\Documents\Github\Asteroids-Flame\asteroids\build\windows\x64\_deps\nuget-subbuild\CMakeFiles\77bdcfa3cee79be933d03a3dfd1bd53e\nuget-populate-download.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\nobem\Documents\Github\Asteroids-Flame\asteroids\build\windows\x64\_deps\nuget-subbuild\CMakeFiles\77bdcfa3cee79be933d03a3dfd1bd53e\nuget-populate-update.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\nobem\Documents\Github\Asteroids-Flame\asteroids\build\windows\x64\_deps\nuget-subbuild\CMakeFiles\77bdcfa3cee79be933d03a3dfd1bd53e\nuget-populate-patch.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\nobem\Documents\Github\Asteroids-Flame\asteroids\build\windows\x64\_deps\nuget-subbuild\CMakeFiles\77bdcfa3cee79be933d03a3dfd1bd53e\nuget-populate-copyfile.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\nobem\Documents\Github\Asteroids-Flame\asteroids\build\windows\x64\_deps\nuget-subbuild\CMakeFiles\77bdcfa3cee79be933d03a3dfd1bd53e\nuget-populate-configure.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\nobem\Documents\Github\Asteroids-Flame\asteroids\build\windows\x64\_deps\nuget-subbuild\CMakeFiles\77bdcfa3cee79be933d03a3dfd1bd53e\nuget-populate-build.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\nobem\Documents\Github\Asteroids-Flame\asteroids\build\windows\x64\_deps\nuget-subbuild\CMakeFiles\77bdcfa3cee79be933d03a3dfd1bd53e\nuget-populate-install.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\nobem\Documents\Github\Asteroids-Flame\asteroids\build\windows\x64\_deps\nuget-subbuild\CMakeFiles\77bdcfa3cee79be933d03a3dfd1bd53e\nuget-populate-test.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\nobem\Documents\Github\Asteroids-Flame\asteroids\build\windows\x64\_deps\nuget-subbuild\CMakeFiles\c674b2e32031f83baaedfbd3005921d8\nuget-populate-complete.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\nobem\Documents\Github\Asteroids-Flame\asteroids\build\windows\x64\_deps\nuget-subbuild\CMakeFiles\12bc12ce5d6b07e053f0ad013d8273db\nuget-populate.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\nobem\Documents\Github\Asteroids-Flame\asteroids\build\windows\x64\_deps\nuget-subbuild\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="C:\Users\nobem\Documents\Github\Asteroids-Flame\asteroids\build\windows\x64\_deps\nuget-subbuild\CMakeFiles\nuget-populate" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{17F633E8-0C25-3C1A-8F3F-78970237C5E2}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

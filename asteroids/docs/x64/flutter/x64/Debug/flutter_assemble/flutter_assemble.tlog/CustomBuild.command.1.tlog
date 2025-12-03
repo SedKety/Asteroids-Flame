@@ -1,0 +1,28 @@
+^C:\USERS\NOBEM\DOCUMENTS\GITHUB\ASTEROIDS-FLAME\ASTEROIDS\BUILD\WINDOWS\X64\CMAKEFILES\5812F2DC47A5CDE2AFE1F4839BEB60F6\FLUTTER_WINDOWS.DLL.RULE
+setlocal
+"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E env FLUTTER_ROOT=C:\Users\nobem\Documents\flutter PROJECT_DIR=C:\Users\nobem\Documents\Github\Asteroids-Flame\asteroids FLUTTER_ROOT=C:\Users\nobem\Documents\flutter FLUTTER_EPHEMERAL_DIR=C:\Users\nobem\Documents\Github\Asteroids-Flame\asteroids\windows\flutter\ephemeral PROJECT_DIR=C:\Users\nobem\Documents\Github\Asteroids-Flame\asteroids FLUTTER_TARGET=C:\Users\nobem\Documents\Github\Asteroids-Flame\asteroids\lib\main.dart DART_DEFINES=RkxVVFRFUl9WRVJTSU9OPTMuMzguMw==,RkxVVFRFUl9DSEFOTkVMPXN0YWJsZQ==,RkxVVFRFUl9HSVRfVVJMPWh0dHBzOi8vZ2l0aHViLmNvbS9mbHV0dGVyL2ZsdXR0ZXIuZ2l0,RkxVVFRFUl9GUkFNRVdPUktfUkVWSVNJT049MTkwNzRkMTJmNw==,RkxVVFRFUl9FTkdJTkVfUkVWSVNJT049MTNlNjU4NzI1ZA==,RkxVVFRFUl9EQVJUX1ZFUlNJT049My4xMC4x DART_OBFUSCATION=false TRACK_WIDGET_CREATION=true TREE_SHAKE_ICONS=false PACKAGE_CONFIG=C:\Users\nobem\Documents\Github\Asteroids-Flame\asteroids\.dart_tool\package_config.json C:/Users/nobem/Documents/flutter/packages/flutter_tools/bin/tool_backend.bat windows-x64 Debug
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\NOBEM\DOCUMENTS\GITHUB\ASTEROIDS-FLAME\ASTEROIDS\BUILD\WINDOWS\X64\CMAKEFILES\2CB9B8F1CC5A31C65B7DD3A34833E30C\FLUTTER_ASSEMBLE.RULE
+setlocal
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\NOBEM\DOCUMENTS\GITHUB\ASTEROIDS-FLAME\ASTEROIDS\WINDOWS\FLUTTER\CMAKELISTS.TXT
+setlocal
+"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SC:/Users/nobem/Documents/Github/Asteroids-Flame/asteroids/windows -BC:/Users/nobem/Documents/Github/Asteroids-Flame/asteroids/build/windows/x64 --check-stamp-file C:/Users/nobem/Documents/Github/Asteroids-Flame/asteroids/build/windows/x64/flutter/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

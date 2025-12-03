@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\nobem\Documents\Github\Asteroids-Flame\asteroids\build\windows\x64\CMakeFiles\5812f2dc47a5cde2afe1f4839beb60f6\flutter_windows.dll.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\nobem\Documents\Github\Asteroids-Flame\asteroids\build\windows\x64\CMakeFiles\2cb9b8f1cc5a31c65b7dd3a34833e30c\flutter_assemble.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\nobem\Documents\Github\Asteroids-Flame\asteroids\windows\flutter\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="C:\Users\nobem\Documents\Github\Asteroids-Flame\asteroids\build\windows\x64\flutter\CMakeFiles\flutter_assemble" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{99A57065-CD6B-37FB-A1F8-5F2FE6236452}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

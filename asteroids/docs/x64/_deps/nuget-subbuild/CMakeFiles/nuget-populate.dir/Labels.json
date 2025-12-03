@@ -1,0 +1,49 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "C:/Users/nobem/Documents/Github/Asteroids-Flame/asteroids/build/windows/x64/_deps/nuget-subbuild/CMakeFiles/nuget-populate"
+		},
+		{
+			"file" : "C:/Users/nobem/Documents/Github/Asteroids-Flame/asteroids/build/windows/x64/_deps/nuget-subbuild/CMakeFiles/12bc12ce5d6b07e053f0ad013d8273db/nuget-populate.rule"
+		},
+		{
+			"file" : "C:/Users/nobem/Documents/Github/Asteroids-Flame/asteroids/build/windows/x64/_deps/nuget-subbuild/CMakeFiles/c674b2e32031f83baaedfbd3005921d8/nuget-populate-complete.rule"
+		},
+		{
+			"file" : "C:/Users/nobem/Documents/Github/Asteroids-Flame/asteroids/build/windows/x64/_deps/nuget-subbuild/CMakeFiles/77bdcfa3cee79be933d03a3dfd1bd53e/nuget-populate-build.rule"
+		},
+		{
+			"file" : "C:/Users/nobem/Documents/Github/Asteroids-Flame/asteroids/build/windows/x64/_deps/nuget-subbuild/CMakeFiles/77bdcfa3cee79be933d03a3dfd1bd53e/nuget-populate-configure.rule"
+		},
+		{
+			"file" : "C:/Users/nobem/Documents/Github/Asteroids-Flame/asteroids/build/windows/x64/_deps/nuget-subbuild/CMakeFiles/77bdcfa3cee79be933d03a3dfd1bd53e/nuget-populate-copyfile.rule"
+		},
+		{
+			"file" : "C:/Users/nobem/Documents/Github/Asteroids-Flame/asteroids/build/windows/x64/_deps/nuget-subbuild/CMakeFiles/77bdcfa3cee79be933d03a3dfd1bd53e/nuget-populate-download.rule"
+		},
+		{
+			"file" : "C:/Users/nobem/Documents/Github/Asteroids-Flame/asteroids/build/windows/x64/_deps/nuget-subbuild/CMakeFiles/77bdcfa3cee79be933d03a3dfd1bd53e/nuget-populate-install.rule"
+		},
+		{
+			"file" : "C:/Users/nobem/Documents/Github/Asteroids-Flame/asteroids/build/windows/x64/_deps/nuget-subbuild/CMakeFiles/77bdcfa3cee79be933d03a3dfd1bd53e/nuget-populate-mkdir.rule"
+		},
+		{
+			"file" : "C:/Users/nobem/Documents/Github/Asteroids-Flame/asteroids/build/windows/x64/_deps/nuget-subbuild/CMakeFiles/77bdcfa3cee79be933d03a3dfd1bd53e/nuget-populate-patch.rule"
+		},
+		{
+			"file" : "C:/Users/nobem/Documents/Github/Asteroids-Flame/asteroids/build/windows/x64/_deps/nuget-subbuild/CMakeFiles/77bdcfa3cee79be933d03a3dfd1bd53e/nuget-populate-test.rule"
+		},
+		{
+			"file" : "C:/Users/nobem/Documents/Github/Asteroids-Flame/asteroids/build/windows/x64/_deps/nuget-subbuild/CMakeFiles/77bdcfa3cee79be933d03a3dfd1bd53e/nuget-populate-update.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"nuget-populate"
+		],
+		"name" : "nuget-populate"
+	}
+}
