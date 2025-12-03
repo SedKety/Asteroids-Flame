@@ -1,0 +1,10 @@
+^C:\USERS\NOBEM\DOCUMENTS\GITHUB\ASTEROIDS-FLAME\ASTEROIDS\BUILD\WINDOWS\X64\CMAKEFILES\EAA2B3B2B3AEAE98380E2B075977026A\INSTALL_FORCE.RULE
+setlocal
+cd .
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
