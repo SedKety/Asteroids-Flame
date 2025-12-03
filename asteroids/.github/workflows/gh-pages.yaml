@@ -10,8 +10,12 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+
       - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+
       - uses: bluefireteam/flutter-gh-pages@v9
         with:
-        baseHref: /Asteroids-Flame/
-        webrenderer: canvaskit
+          baseHref: /Asteroids-Flame/
+          webRenderer: canvaskit
