@@ -10,4 +10,4 @@ void main() {
 void restart(){
   game.removeFromParent();
   main();
-}
+} 
