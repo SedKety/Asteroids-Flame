@@ -48,7 +48,7 @@ class AsteroidSpawner extends Component with HasGameReference<AsteroidsGame> {
       spawnPos = Vector2(random.nextDouble() * game.size.x, random.nextDouble() * game.size.y);
 
       if(spawnPos.distanceTo(game.player.position) >= distanceFromPlayer){
-        posFound = true;
+        posFound = true; 
         break;
       }
     }
