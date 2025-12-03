@@ -1,14 +1,15 @@
 import 'dart:math';
 
+import 'package:asteroids/asteroid_game.dart';
 import 'package:asteroids/damagable.dart';
 import 'package:asteroids/player_systems/mixins/transform_extensions.dart';
 import 'package:asteroids/pooling/object_pool.dart';
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flame/game.dart';
+import 'package:flame_audio/flame_audio.dart';
 
 class Asteroid extends SpriteComponent with CollisionCallbacks, TransformExtensions implements Damagable {
-
   Game game;
   Vector2 velocity;
   ObjectPool asteroidPool;
@@ -19,14 +20,18 @@ class Asteroid extends SpriteComponent with CollisionCallbacks, TransformExtensi
   int maxSplitLevel = 2;  //How many cycles this asteroid can live
   int fragments = 2; //How many split asteroids are spawned. Nicknamed: Fragments
 
+  int deathPoints = 0;
+
   Asteroid({required Vector2 position, 
     required Game gameRef, 
     required Vector2 asteroidVelocity, 
     required ObjectPool pool, 
-    required int level
-    }) : game = gameRef, velocity = asteroidVelocity, asteroidPool = pool, currentSplitLevel = level,
+    required int level,
+    required int pointsGainedOnDeath,
+    }) : game = gameRef, velocity = asteroidVelocity, asteroidPool = pool, currentSplitLevel = level, deathPoints = pointsGainedOnDeath,
       super(position: position, size: Vector2(124, 70));
 
+  // ignore: non_constant_identifier_names
   void updateValues(Vector2 updatedPosition, Vector2 updatedVelocity, ObjectPool OP, int level){
     position = updatedPosition;
     velocity = updatedVelocity;
@@ -58,6 +63,7 @@ class Asteroid extends SpriteComponent with CollisionCallbacks, TransformExtensi
 
   //The base size of the sprite
   final Vector2 baseSize = Vector2(124, 70);
+  
   void scaleAsteroid() =>
     size = baseSize * pow(0.67, currentSplitLevel).toDouble();
 
@@ -75,13 +81,15 @@ class Asteroid extends SpriteComponent with CollisionCallbacks, TransformExtensi
   }
 
   void onDestroy(){
-    print("Destroyed");
     asteroidPool.poolItem(this);
     removeFromParent();
 
     if(currentSplitLevel < maxSplitLevel){
       split();
     }
+    AsteroidsGame.points += deathPoints;
+
+    FlameAudio.play("explosion.wav");
   }
 
   void split(){
@@ -107,7 +115,14 @@ class Asteroid extends SpriteComponent with CollisionCallbacks, TransformExtensi
       asteroid.updateValues(spawnPos, velocity, asteroidPool, currentSplitLevel + 1);
     }
     else{
-      asteroid = Asteroid(position: spawnPos, gameRef: game, asteroidVelocity: velocity, pool: asteroidPool, level: currentSplitLevel + 1);
+      asteroid = Asteroid(
+        position: spawnPos, 
+        gameRef: game, 
+        asteroidVelocity: velocity, 
+        pool: asteroidPool, 
+        level: currentSplitLevel + 1, 
+        pointsGainedOnDeath: deathPoints
+        );
       asteroid.parent = asteroidPool;
     }
   }

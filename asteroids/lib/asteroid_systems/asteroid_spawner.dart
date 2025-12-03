@@ -19,9 +19,11 @@ class AsteroidSpawner extends Component with HasGameReference<AsteroidsGame> {
 
   double distanceFromPlayer = 333;
 
+  int pointsGainedOnDeath = 50;
+
   @override
   void onLoad(){
-    game.add(asteroidPool);
+    add(asteroidPool);
   }
 
   @override
@@ -46,7 +48,6 @@ class AsteroidSpawner extends Component with HasGameReference<AsteroidsGame> {
       spawnPos = Vector2(random.nextDouble() * game.size.x, random.nextDouble() * game.size.y);
 
       if(spawnPos.distanceTo(game.player.position) >= distanceFromPlayer){
-        print(spawnPos.distanceTo(game.player.position));
         posFound = true;
         break;
       }
@@ -55,13 +56,20 @@ class AsteroidSpawner extends Component with HasGameReference<AsteroidsGame> {
     //If no valid position is found far away enough from the player we return to prevent spawning an asteroid on the player
     if(!posFound) return; 
 
-    var velocity = Vector2(random.nextDoubleBetween(-1, 1) * 50, random.nextDouble() * 50);
+    var velocity = Vector2(random.nextDoubleBetween(-1, 1) * 50, random.nextDoubleBetween(-1, 1) * 50);
 
     if(asteroid != null){
       asteroid.updateValues(spawnPos, velocity, asteroidPool, 0);
     }
     else{
-      asteroid = Asteroid(position: spawnPos, gameRef: game, asteroidVelocity: velocity, pool: asteroidPool, level: 0);
+      asteroid = Asteroid(
+        position: spawnPos, 
+        gameRef: game, 
+        asteroidVelocity: velocity, 
+        pool: asteroidPool, 
+        level: 0, 
+        pointsGainedOnDeath: pointsGainedOnDeath
+        );
       asteroid.parent = asteroidPool;
     }
   }

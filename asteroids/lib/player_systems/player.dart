@@ -186,6 +186,6 @@ implements Damagable
   }
 
   void onDeath(){
-    print("Player has died");
+    game.onGameFinished();
   }
 }
